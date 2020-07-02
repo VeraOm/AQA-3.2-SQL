@@ -1,0 +1,7 @@
+#!/bin/sh
+DB_URL='jdbc:mysql://192.168.99.101:3306/vera';
+DB_USER='vera';
+DB_PASS='pass';
+CMD_LINE="mysql -u ${DB_USER} $DB_USER --password=$DB_PASS < /docker-entrypoint-initdb.d/20_data_clean.sql";
+docker exec -it aqa4-sql bash -c "$CMD_LINE";
+java -jar ./app-deadline.jar
