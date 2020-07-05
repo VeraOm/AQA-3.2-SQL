@@ -22,12 +22,7 @@ public class VerificationCodePage {
         new DashboardPage();
     }
 
-    public void clearInput() {
-        codeField.sendKeys(Keys.LEFT_CONTROL + "a" + Keys.BACK_SPACE);
-    }
-
     public void invalidVerify(String verificationCode) {
-        clearInput();
         codeField.setValue(verificationCode);
         verifyButton.click();
         verifyButton.shouldBe(visible);
@@ -35,7 +30,6 @@ public class VerificationCodePage {
     }
 
     public void isBlockedUser(String verificationCode) {
-        clearInput();
         codeField.setValue(verificationCode);
         verifyButton.click();
         errorPanel.shouldBe(visible).shouldHave(text("Ошибка")).shouldHave(text("Превышено количество попыток ввода кода"));

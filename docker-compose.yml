@@ -1,9 +1,4 @@
 version: '3.7'
-volumes:
-  mysqldb:
-    external: true
-  dbini:
-    external: true
 services:  
   mysqldb:    
     image: mysql:8.0.19
@@ -11,11 +6,11 @@ services:
     ports:      
       - '3306:3306'    
     volumes:      
-      - mysqldb:/var/lib/mysql/
-      - dbini:/docker-entrypoint-initdb.d/
+      - ./mysqldb:/var/lib/mysql/
+      - ./dbini:/docker-entrypoint-initdb.d/
     environment:      
       - MYSQL_RANDOM_ROOT_PASSWORD=yes      
       - MYSQL_DATABASE=vera      
       - MYSQL_USER=vera
       - MYSQL_PASSWORD=pass
-    
+      

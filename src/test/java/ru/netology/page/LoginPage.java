@@ -19,13 +19,7 @@ public class LoginPage {
         open("http://localhost:9999");
     }
 
-    public void clearInput() {
-        loginField.sendKeys(Keys.LEFT_CONTROL + "a" + Keys.BACK_SPACE);
-        passwordField.sendKeys(Keys.LEFT_CONTROL + "a" + Keys.BACK_SPACE);
-    }
-
     public VerificationCodePage validLogin(User user) {
-        clearInput();
         loginField.setValue(user.getLogin());
         passwordField.setValue(user.getPassword());
         loginButton.click();
@@ -33,7 +27,6 @@ public class LoginPage {
     }
 
     public void invalidUser(User user) {
-        clearInput();
         loginField.setValue(user.getLogin());
         passwordField.setValue(user.getPassword());
         loginButton.click();
